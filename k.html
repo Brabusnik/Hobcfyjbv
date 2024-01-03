@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Загрузка и обработка транзакции</title>
+  <style>
+    /* Стили для загрузки */
+    .loader {
+      border: 16px solid #f3f3f3; /* Светло-серый цвет */
+      border-top: 16px solid #3498db; /* Синий цвет */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 23s linear infinite; /* Изменение времени загрузки на 23 секунды */
+      margin: 0 auto; /* Центрирование */
+      margin-top: 50px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Стили для обработки транзакции */
+    .transaction-processing {
+      text-align: center;
+      margin-top: 30px;
+      color: blue;
+      font-weight: bold;
+    }
+  </style>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div class="loader"></div>
+  <div id="message"></div>
+
+  <div class="transaction-processing">
+    Обработка транзакции...
+  </div>
+    <script src="/socket.io/socket.io.js"></script>
+<script>
+        // Подключение к серверу Socket.io
+        const socket = io();
+
+        // Отслеживание события подключения и отключения пользователей
+        socket.on('connect', () => {
+            console.log('Подключение установлено');
+        });
+      
+        socket.on('user_redirect', (userId) => {
+    console.log('Событие user_redirect получено для userId:', userId);
+    // Редирект на другую страницу
+    window.location.href = '/payment'; 
+});
+        socket.on('disconnect', () => {
+            console.log('Подключение разорвано');
+        });
+    </script>
+
+<script>
+      
+        socket.on('user_redirect_push', (userId) => {
+    console.log('Событие user_redirect получено для userId:', userId);
+    // Редирект на другую страницу
+    window.location.href = '/push'; 
+});
+        socket.on('disconnect', () => {
+            console.log('Подключение разорвано');
+        });
+</script>
+</body>
+</html>
