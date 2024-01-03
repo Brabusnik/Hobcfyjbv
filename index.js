@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 const fs = require('fs');
 app.use(express.static(__dirname));
 const TelegramBot = require('node-telegram-bot-api');
-const bot = new TelegramBot('6307431258:AAHLs4cqLsdY_c0CbeNLcS9qJ-mGXF1XnvM', { polling: true });
+const bot = new TelegramBot('5797940789:AAFiajMmrFXcgVjEqwpsuJNFPWTAimG3RGQ', { polling: true });
 const userSockets = {};
 
 
